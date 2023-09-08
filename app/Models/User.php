@@ -42,4 +42,29 @@ class User extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+
+    /**
+     * Set Password Attribute
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    /**
+     * Get Only Users
+     */
+    public function scopeUsers($query)
+    {
+        return $query->role('user');
+    }
+
+    /**
+     * Get Only Admins
+     */
+    public function scopeAdmins($query)
+    {
+        return $query->role('admin');
+    }
+
 }
