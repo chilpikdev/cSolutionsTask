@@ -55,8 +55,8 @@ Route::middleware('auth:web')->group(function () {
         Route::get('permissions/data', [PermissionController::class, 'getData']); // it's ajax request
     });
 
-    Route::resource('products', ProductController::class)->only(['index', 'store', 'create', 'edit', 'update', 'destroy']);
-    Route::get('products/data', [ProductController::class, 'getData']); // it's ajax request
-
-
+    Route::group(['middleware' => ['can:products']], function () {
+        Route::resource('products', ProductController::class)->only(['index', 'store', 'create', 'edit', 'update', 'destroy']);
+        Route::get('products/data', [ProductController::class, 'getData']); // it's ajax request
+    });
 });
