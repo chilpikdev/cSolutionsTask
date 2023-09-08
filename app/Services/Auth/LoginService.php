@@ -14,7 +14,6 @@ class LoginService
     {
         if (auth()->attempt(['username' => $dto->getUserName(), 'password' => $dto->getPassword()], $dto->isRemember()) || auth()->viaRemember()) {
             $request->session()->regenerate();
-
             return redirect()->route('dashboard');
         }
         else

@@ -22,8 +22,6 @@ class DataTableService
 
         $items = $model->query();
 
-        // $items->where('name', 'LIKE', '%"' . $searchValue . '%","locale":"' . app()->getLocale() . '"%');
-
         if ($searchValue && count($searchParams) > 0) {
             foreach ($searchParams as $key => $param)
             {
@@ -49,8 +47,6 @@ class DataTableService
             $totalRecords = $model->count();
 
         $page = ($row / $rowperpage) + 1;
-
-//        dd($items->get());
 
         $items = $items->paginate(perPage: $rowperpage, pageName: 'page', page: $page ?: 1);
 

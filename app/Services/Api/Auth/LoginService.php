@@ -20,7 +20,7 @@ class LoginService
             if (Hash::check($dto->getPassword(), $user->password))
             {
                 auth()->login($user);
-                $user->tokens()->delete();
+                auth()->user()->tokens()->delete();
 
                 return response()->json([
                     'status' => true,
