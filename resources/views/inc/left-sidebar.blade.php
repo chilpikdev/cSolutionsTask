@@ -78,6 +78,15 @@
                 </li>
                 @endcan
 
+                @can('products')
+                <li class="nav-item">
+                    <a href="{{ route('products.index') }}" class="nav-link @if(request()->is('products') || request()->is('*/products/*')) {{ "active" }} @endif">
+                      <i class="nav-icon fas fa-shopping-cart"></i>
+                      <p>Products</p>
+                    </a>
+                </li>
+                @endcan
+
                 {{-- <li class="nav-item @if(request()->is('*/media/*')) {{ "menu-open" }} @endif">
                     <a href="#" class="nav-link @if(request()->is('*/media/*') || request()->is('*/media/*')) {{ "active" }} @endif">
                       <i class="nav-icon fas fa-cloud-upload-alt"></i>
@@ -100,7 +109,7 @@
 
                 @can('settings')
                 <li class="nav-item">
-                    <a href="{{ route('admin.settings.index') }}" class="nav-link @if(request()->is('*/settings') || request()->is('*/settings/*')) {{ "active" }} @endif">
+                    <a href="{{ route('products.index') }}" class="nav-link @if(request()->is('*/settings') || request()->is('*/settings/*')) {{ "active" }} @endif">
                       <i class="nav-icon fas fa-cog"></i>
                       <p>{{ __('admin.menu.settings') }}</p>
                     </a>

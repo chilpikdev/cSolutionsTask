@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\Users\AdminController;
 use App\Http\Controllers\Users\UserController;
@@ -53,5 +54,9 @@ Route::middleware('auth:web')->group(function () {
         Route::resource('permissions', PermissionController::class)->only(['index', 'store', 'create', 'edit', 'update', 'destroy']);
         Route::get('permissions/data', [PermissionController::class, 'getData']); // it's ajax request
     });
+
+    Route::resource('products', ProductController::class)->only(['index', 'store', 'create', 'edit', 'update', 'destroy']);
+    Route::get('products/data', [ProductController::class, 'getData']); // it's ajax request
+
 
 });
